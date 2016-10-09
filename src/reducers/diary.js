@@ -1,4 +1,4 @@
-import { types } from '../constants/diary'
+import types from '../constants/diary'
 
 const INITIAL_STATE = {
     logs: {}

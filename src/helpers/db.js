@@ -39,7 +39,7 @@ function remove(args) {
 
 }
 
-export const actions = {
+const db = {
     on,
     once,
     off,
@@ -48,3 +48,5 @@ export const actions = {
     update,
     remove
 }
+
+export default db

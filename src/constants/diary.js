@@ -1,5 +1,5 @@
 // constants
-export const types = {
+const types = {
     ADD_LOG: 'ADD_LOG',
     DELETE_LOG: 'DELETE_LOG',
     UPDATE_LOG: 'UPDATE_LOG',
@@ -7,3 +7,5 @@ export const types = {
     FETCH_ALL_LOGS: 'FETCH_ALL_LOGS',
     STOP_FETCH_USER_LOGS: 'STOP_FETCH_USER_LOGS'
 }
+
+export default types
