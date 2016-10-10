@@ -1,16 +1,15 @@
 import React from 'react'
 import { Route, IndexRoute  } from 'react-router'
 
-import home from './components/home'
-import layout from './components/layout'
-
-/*import login from './components/login'
-<Route path="login" component={login} />
-import diary from './components/diary'
-<Route path="diary" component={diary} />*/
+import Home from './components/home'
+import Layout from './components/layout'
+import Login from './components/login'
+import NotFound from './components/notFound'
 
 export default (
-    <Route path="/" component={layout}>
-        <IndexRoute component={home}/>
+    <Route path="/" component={Layout}>
+        <IndexRoute component={Home}/>
+        <Route path="/login" component={Login}/>
+        <Route path="*" component={NotFound}/>
     </Route>
 )

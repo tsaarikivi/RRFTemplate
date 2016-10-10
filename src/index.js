@@ -4,6 +4,7 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 import { Router, browserHistory } from 'react-router'
+import { composeWithDevTools } from 'redux-devtools-extension'
 
 import Store from './store'
 import routes from './routes'
@@ -27,8 +28,9 @@ firebase.initializeApp(stageConfig)
  * firebase deploy --only database
  */
 
-// create store
-let store = createStore(Store, applyMiddleware(thunk))
+// create store with devtools
+// devtools should be exerted in production?
+let store = createStore(Store, composeWithDevTools(applyMiddleware(thunk)))
 
 // render app
 ReactDOM.render(
