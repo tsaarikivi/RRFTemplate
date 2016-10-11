@@ -14,7 +14,7 @@ function login(args) {
             .catch(error => {
                 console.error(error)
                 dispatch({
-                    type: authTypes.LOGIN+'_ERROR'
+                    type: authTypes.LOGIN + '_ERROR'
                 })
             })
     }
@@ -32,7 +32,7 @@ function register(args) {
             .catch(error => {
                 console.error(error)
                 dispatch({
-                    type: authTypes.REGISTER+'_ERROR'
+                    type: authTypes.REGISTER + '_ERROR'
                 })
             })
     }
@@ -50,20 +50,35 @@ function logout(args) {
             .catch(error => {
                 console.error(error)
                 dispatch({
-                    type: authTypes.LOGOUT+'_ERROR'
+                    type: authTypes.LOGOUT + '_ERROR'
                 })
             })
     }
 }
 
-// TODO
-// function deleteUser(args) {}
-// function reauthenticate(args) {}
+function deleteUser() {
+    return dispatch => {
+        firebase.auth().currentUser.delete()
+            .then(() => {
+                console.log("delete user")
+                dispatch({
+                    type: authTypes.DELETE_USER
+                })
+            }, error => {
+                console.error(error)
+                dispatch({
+                    type: authTypes.DELETE_USER + '_ERROR'
+                })
+            })
+    }
+}
 
 const auth = {
     login,
     register,
-    logout
+    logout,
+    deleteUser,
+    reauthenticate
 }
 
 export default auth

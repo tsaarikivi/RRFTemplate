@@ -15,6 +15,7 @@ class Login extends React.Component {
                 <button onClick={() => this.login()}>login</button>
                 <button onClick={() => this.register()}>register</button>
                 <button onClick={() => this.logout()}>logout</button>
+                <button onClick={() => this.deleteUser()}>deleteUser</button>
                 <button onClick={() => this.push()}>push</button>
                 <button onClick={() => this.on()}>on</button>
                 <button onClick={() => this.off()}>off</button>
@@ -71,8 +72,12 @@ class Login extends React.Component {
     off() {
         this.props.dbh.off({
             ref: '/users',
-            type: authTypes.OFF_FETCH_USERS
+            type: authTypes.FETCH_USERS
         })
+    }
+
+    deleteUser() {
+        this.props.auth.deleteUser()
     }
 }
 

@@ -2,6 +2,11 @@ import firebase from 'firebase'
 
 function on(args) {
     return dispatch => {
+        firebase.database().ref(args.ref).off()
+        console.log("databse off (safety)")
+        dispatch({
+            type: args.type + '_OFF'
+        })
         firebase.database().ref(args.ref).on('value', data => {
             console.log("database on")
             dispatch({
@@ -11,7 +16,7 @@ function on(args) {
         }, error => {
             console.error(error)
             dispatch({
-                type: args.type+'_ERROR'
+                type: args.type + '_ERROR'
             })
         })
     }
@@ -30,7 +35,7 @@ function once(args) {
             .catch(error => {
                 console.error(error)
                 dispatch({
-                    type: args.type+'_ERROR'
+                    type: args.type + '_ERROR'
                 })
             })
     }
@@ -38,10 +43,10 @@ function once(args) {
 
 function off(args) {
     return dispatch => {
-        firebase.database().ref(args.ref).off('value')
-        console.log("database ref off")
+        firebase.database().ref(args.ref).off()
+        console.log("database off")
         dispatch({
-            type: args.type
+            type: args.type + '_OFF'
         })
     }
 }
@@ -58,7 +63,7 @@ function push(args) {
             .catch(error => {
                 console.error(error)
                 dispatch({
-                    type: args.type+'_ERROR'
+                    type: args.type + '_ERROR'
                 })
             })
     }
@@ -76,7 +81,7 @@ function set(args) {
             .catch(error => {
                 console.error(error)
                 dispatch({
-                    type: args.type+'_ERROR'
+                    type: args.type + '_ERROR'
                 })
             })
     }
@@ -94,7 +99,7 @@ function update(args) {
             .catch(error => {
                 console.error(error)
                 dispatch({
-                    type: args.type+'_ERROR'
+                    type: args.type + '_ERROR'
                 })
             })
     }
@@ -103,7 +108,7 @@ function update(args) {
 function remove(args) {
     return dispatch => {
         firebase.database().ref(args.ref).remove()
-            console.log("databse remove")
+        console.log("databse remove")
             .then(() => {
                 dispatch({
                     type: args.type
@@ -112,7 +117,7 @@ function remove(args) {
             .catch(error => {
                 console.error(error)
                 dispatch({
-                    type: args.type+'_ERROR'
+                    type: args.type + '_ERROR'
                 })
             })
     }
