@@ -77,8 +77,7 @@ const auth = {
     login,
     register,
     logout,
-    deleteUser,
-    reauthenticate
+    deleteUser
 }
 
 export default auth

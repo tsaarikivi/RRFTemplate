@@ -4,8 +4,7 @@ const types = {
     REGISTER: 'REGISTER',
     ADD_USER: 'ADD_USER',
     FETCH_USERS: 'FETCH_USERS',
-    DELETE_USER: 'DELETE_USER',
-    REAUTHENTICATE: 'REAUTHENTICATE'
+    DELETE_USER: 'DELETE_USER'
 }
 
 export default types
