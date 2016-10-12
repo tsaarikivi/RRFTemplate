@@ -5,16 +5,18 @@ import authTypes from '../constants/auth'
 function login(args) {
     return dispatch => {
         firebase.auth().signInWithEmailAndPassword(args.user, args.password)
-            .then(() => {
+            .then(user => {
                 console.log("login success")
                 dispatch({
-                    type: authTypes.LOGIN
+                    type: authTypes.LOGIN,
+                    payload: user
                 })
             })
             .catch(error => {
                 console.error(error)
                 dispatch({
-                    type: authTypes.LOGIN + '_ERROR'
+                    type: authTypes.LOGIN + '_ERROR',
+                    payload: error
                 })
             })
     }
@@ -23,16 +25,18 @@ function login(args) {
 function register(args) {
     return dispatch => {
         firebase.auth().createUserWithEmailAndPassword(args.user, args.password)
-            .then(() => {
+            .then(user => {
                 console.log("register success")
                 dispatch({
-                    type: authTypes.REGISTER
+                    type: authTypes.REGISTER,
+                    payload: user
                 })
             })
             .catch(error => {
                 console.error(error)
                 dispatch({
-                    type: authTypes.REGISTER + '_ERROR'
+                    type: authTypes.REGISTER + '_ERROR',
+                    payload: error
                 })
             })
     }
@@ -50,7 +54,8 @@ function logout(args) {
             .catch(error => {
                 console.error(error)
                 dispatch({
-                    type: authTypes.LOGOUT + '_ERROR'
+                    type: authTypes.LOGOUT + '_ERROR',
+                    payload: error
                 })
             })
     }
@@ -69,13 +74,15 @@ function deleteUser() {
                 }, error => {
                     console.error(error)
                     dispatch({
-                        type: authTypes.DELETE_USER + '_ERROR'
+                        type: authTypes.DELETE_USER + '_ERROR',
+                        payload: error
                     })
                 })
         } else {
             console.error("no current user")
             dispatch({
-                type: authTypes.DELETE_USER + '_ERROR'
+                type: authTypes.DELETE_USER + '_ERROR',
+                payload: { message: "no current user" }
             })
         }
     }

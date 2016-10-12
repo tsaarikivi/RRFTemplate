@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
-import { Router, browserHistory } from 'react-router'
+import { Router, hashHistory } from 'react-router'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
 import Store from './store'
@@ -35,7 +35,7 @@ let store = createStore(Store, composeWithDevTools(applyMiddleware(thunk)))
 // render app
 ReactDOM.render(
     <Provider store={store}>
-        <Router history={browserHistory} routes={routes}/>
+        <Router history={hashHistory} routes={routes} />
     </Provider>,
     document.getElementById('root')
 )

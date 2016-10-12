@@ -11,7 +11,9 @@ class Login extends React.Component {
     render() {
         return (
             <div>
-                Login
+                <h1>TESTING</h1>
+                {this.renderCurrentUser()}
+                {this.renderError()}
                 <button onClick={() => this.login()}>login</button>
                 <button onClick={() => this.register()}>register</button>
                 <button onClick={() => this.logout()}>logout</button>
@@ -19,19 +21,26 @@ class Login extends React.Component {
                 <button onClick={() => this.push()}>push</button>
                 <button onClick={() => this.on()}>on</button>
                 <button onClick={() => this.off()}>off</button>
-                {this.renderError()}
             </div>
         )
+    }
+
+    renderCurrentUser() {
+        let { user } = this.props
+        if (user) {
+            return <h2>current user : {this.props.user.email}</h2>
+        }
+        return <h2>no current user</h2>
     }
 
     renderError() {
         let { error } = this.props
         if (error) {
-            return <span>
-                {this.props.error}
-            </span>
+            return <h3>
+                last error : {this.props.error}
+            </h3>
         }
-        return null
+        return <h3>no error</h3>
     }
 
     login() {
@@ -83,7 +92,7 @@ class Login extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        user: state.user,
+        user: state.auth,
         error: state.error
     }
 }

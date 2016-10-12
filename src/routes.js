@@ -8,8 +8,8 @@ import NotFound from './components/notFound'
 
 export default (
     <Route path="/" component={Layout}>
-        <IndexRoute component={Home} />
-        <Route path="/login" component={Login} />
+        <IndexRoute component={Login} />
+        <Route path="/home" component={Home} />
         <Route path="*" component={NotFound} />
     </Route>
 )

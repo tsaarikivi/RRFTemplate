@@ -5,18 +5,18 @@ const INITIAL_STATE = null
 export default (state = INITIAL_STATE, args) => {
     switch (args.type) {
         case authTypes.LOGIN + '_ERROR':
-            return 'Login error'
+            return args.payload.message
         case authTypes.LOGOUT + '_ERROR':
-            return 'Logout error'
+            return args.payload.message
         case authTypes.REGISTER + '_ERROR':
-            return 'Register error'
+            return args.payload.message
         case authTypes.ADD_USER + '_ERROR':
-            return 'Add user error'
+            return args.payload.message
         case authTypes.FETCH_USERS + '_ERROR':
-            return 'Fetch users error'
+            return args.payload.message
         case authTypes.DELETE_USER + '_ERROR':
-            return 'Delete user error'
+            return args.payload.message
         default:
-            return state
+            return INITIAL_STATE
     }
 }
