@@ -58,18 +58,26 @@ function logout(args) {
 
 function deleteUser() {
     return dispatch => {
-        firebase.auth().currentUser.delete()
-            .then(() => {
-                console.log("delete user")
-                dispatch({
-                    type: authTypes.DELETE_USER
+        const user = firebase.auth().currentUser
+        if (user) {
+            user.delete()
+                .then(() => {
+                    console.log("delete user")
+                    dispatch({
+                        type: authTypes.DELETE_USER
+                    })
+                }, error => {
+                    console.error(error)
+                    dispatch({
+                        type: authTypes.DELETE_USER + '_ERROR'
+                    })
                 })
-            }, error => {
-                console.error(error)
-                dispatch({
-                    type: authTypes.DELETE_USER + '_ERROR'
-                })
+        } else {
+            console.error("no current user")
+            dispatch({
+                type: authTypes.DELETE_USER + '_ERROR'
             })
+        }
     }
 }
 
