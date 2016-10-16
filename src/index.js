@@ -12,21 +12,18 @@ import './styles/index.css'
 
 // init firebase
 import firebase from 'firebase'
-const stageConfig = {
+/*STAGE CONFIG*/
+const fbconfig = {
     apiKey: "AIzaSyATwK-J3bFj4_0tvPH7MusCu4j0owfUn9Y",
     authDomain: "mobx-test.firebaseapp.com",
     databaseURL: "https://mobx-test.firebaseio.com"
 }
-const prodConfig = {
-}
-// CHOOSE A CONFIG
-firebase.initializeApp(stageConfig)
-//firebase.initializeApp(prodConfig)
 
-/**Firebase cli commands
- * npm run buíld && firebase use stage && firebase deploy
- * firebase deploy --only database
- */
+/*PRODUCTION CONFIG
+const fbconfig = {
+}*/
+
+firebase.initializeApp(fbconfig)
 
 // create store with devtools
 // devtools should be exerted in production?
