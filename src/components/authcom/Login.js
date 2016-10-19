@@ -10,19 +10,39 @@ import authTypes from '../../constants/auth'
 class Login extends React.Component {
     render() {
         return (
-            <div>
-                <h1>TESTING</h1>
-                {this.renderCurrentUser()}
-                {this.renderError()}
-                <button onClick={() => this.login()}>login</button>
-                <button onClick={() => this.register()}>register</button>
-                <button onClick={() => this.logout()}>logout</button>
-                <button onClick={() => this.deleteUser()}>deleteUser</button>
-                <button onClick={() => this.push()}>push</button>
-                <button onClick={() => this.on()}>on</button>
-                <button onClick={() => this.off()}>off</button>
-                <button onClick={() => this.contains()}>contains</button>
-            </div>
+            <div className="card">
+                <div className="card-fade-line">TESTING</div>
+                <div className="card-line">
+                    {this.renderCurrentUser()}
+                </div>
+                <div className="card-line">
+                    {this.renderError()}
+                </div>
+                <div className="card-row">
+                    <button onClick={() => this.login()}>LOGIN</button>
+                </div>
+                <div className="card-row">
+                    <button onClick={() => this.register()}>REGISTER</button>
+                </div>
+                <div className="card-row">
+                    <button onClick={() => this.logout()}>LOGOUT</button>
+                </div>
+                <div className="card-row">
+                    <button onClick={() => this.deleteUser()}>DELETE USER</button>
+                </div>
+                <div className="card-row">
+                    <button onClick={() => this.push()}>PUSH</button>
+                </div>
+                <div className="card-row">
+                    <button onClick={() => this.on()}>ON</button>
+                </div>
+                <div className="card-row">
+                    <button onClick={() => this.off()}>OFF</button>
+                </div>
+                <div className="card-row">
+                    <button onClick={() => this.contains()}>CONTAINS</button>
+                </div>
+            </div >
         )
     }
 
@@ -35,19 +55,17 @@ class Login extends React.Component {
     renderCurrentUser() {
         let { user } = this.props
         if (user) {
-            return <h2>current user : {this.props.user.email}</h2>
+            return "current user : " + this.props.user.email
         }
-        return <h2>no current user</h2>
+        return "no current user"
     }
 
     renderError() {
         let { error } = this.props
         if (error) {
-            return <h3>
-                last error : {this.props.error}
-            </h3>
+            return "last error : " + this.props.error
         }
-        return <h3>no error</h3>
+        return "no error"
     }
 
     login() {
