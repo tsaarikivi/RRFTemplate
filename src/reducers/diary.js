@@ -1,14 +1,14 @@
-import types from '../constants/diary'
+import types from '../constants/auth';
 
 const INITIAL_STATE = {
-    logs: {}
-}
+    users: {}
+};
 
 export default (state = INITIAL_STATE, args) => {
     switch (args.type) {
-        case types.FETCH_ALL_LOGS:
-            return Object.assign({}, state, {logs: args.payload})
+        case types.FETCH_USERS:
+            return Object.assign({}, state, { users: args.payload });
         default:
-            return state
+            return state;
     }
 }

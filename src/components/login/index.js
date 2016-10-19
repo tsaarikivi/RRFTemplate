@@ -21,8 +21,15 @@ class Login extends React.Component {
                 <button onClick={() => this.push()}>push</button>
                 <button onClick={() => this.on()}>on</button>
                 <button onClick={() => this.off()}>off</button>
+                <button onClick={() => this.contains()}>contains</button>
             </div>
         )
+    }
+
+    contains() {
+        this.props.dbh.contains({
+            ref: "users/-KTtsrI4mEcjVRbAhnOS"
+        })
     }
 
     renderCurrentUser() {
@@ -76,6 +83,7 @@ class Login extends React.Component {
             ref: '/users',
             type: authTypes.FETCH_USERS
         })
+        console.log(this.props.diary.users)
     }
 
     off() {
@@ -93,7 +101,8 @@ class Login extends React.Component {
 function mapStateToProps(state) {
     return {
         user: state.auth,
-        error: state.error
+        error: state.error,
+        diary: state.diary
     }
 }
 

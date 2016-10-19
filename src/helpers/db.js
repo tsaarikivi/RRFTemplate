@@ -1,6 +1,9 @@
 import firebase from 'firebase'
 
+import dbTypes from '../constants/db'
+
 function on(args) {
+    console.log("REFFI", firebase.database().ref(args.ref))
     return dispatch => {
         firebase.database().ref(args.ref).off()
         console.log("databse off (safety)")
@@ -123,6 +126,24 @@ function remove(args) {
     }
 }
 
+function contains(args) {
+    return dispatch => {
+        firebase.database().ref(args.ref).once('value')
+            .then(data => {
+                console.log("contains :", data.exists())
+                dispatch({
+                    type: dbTypes.DB_CONTAINS
+                })
+            })
+            .catch(error => {
+                console.log(error)
+                dispatch({
+                    type: dbTypes.DB_CONTAINS + '_ERROR'
+                })
+            })
+    }
+}
+
 const db = {
     on,
     once,
@@ -130,7 +151,8 @@ const db = {
     push,
     set,
     update,
-    remove
+    remove,
+    contains
 }
 
 export default db
