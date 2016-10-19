@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "mobx-test"
+    "default": "mobx-test",
+    "stage": "reservation-stage"
   }
 }
