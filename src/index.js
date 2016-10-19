@@ -14,15 +14,15 @@ import './styles/index.css'
 import firebase from 'firebase'
 /*STAGE CONFIG*/
 const fbconfig = {
-    apiKey: "AIzaSyATwK-J3bFj4_0tvPH7MusCu4j0owfUn9Y",
-    authDomain: "mobx-test.firebaseapp.com",
-    databaseURL: "https://mobx-test.firebaseio.com"
+    apiKey: "AIzaSyCxYOmkghssxw-0PidNwGAWY3G7ekhkjCg",
+    authDomain: "reservation-stage.firebaseapp.com",
+    databaseURL: "https://reservation-stage.firebaseio.com",
+    storageBucket: "reservation-stage.appspot.com",
+    messagingSenderId: "346485514187"
 }
-
 /*PRODUCTION CONFIG
 const fbconfig = {
 }*/
-
 firebase.initializeApp(fbconfig)
 
 // create store with devtools
