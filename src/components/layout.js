@@ -1,14 +1,16 @@
 import React from 'react'
 
 import Auth from './auth'
-import Static from './static'
+import Topbar from './static/Topbar'
+import Sidebar from './static/Sidebar'
 
 export default class Layout extends React.Component {
   render() {
     return (
       <div>
         <Auth />
-        <Static />
+        <Topbar />
+        <Sidebar />
         <div className="body-container">
           {this.props.children}
         </div>
